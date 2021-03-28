@@ -8,7 +8,7 @@ pronombre([mi|S],S).
 pronombre([yo|S],S).
 pronombre([nosotros|S],S).
 pronombre([nos|S],S).
-
+pronombre([se|S], S).
 
 articulo([la|S],S).
 articulo([el|S],S).
@@ -22,6 +22,7 @@ preposicion([a|S],S).
 
 verbo([estoy|S],S).
 verbo([estamos|S],S).
+verbo([esta|S], S).
 verbo([voy|S],S).
 verbo([vamos|S],S).
 verbo([dirijo|S],S).
@@ -31,48 +32,93 @@ verbo([quiero|S],S).
 verbo([pasar|S],S).
 
 
-establecimiento([supermercado|S],S).
-establecimiento([farmacia|S],S).
-establecimiento([mercado|S],S).
-establecimiento([ferreteria|S],S).
-establecimiento([zapateria|S],S).
+negacion([no|[]],[]).
+negacion([no|_]).
+
+establecimiento([supermercado|_]).
+establecimiento([farmacia|_]).
+establecimiento([mercado|_]).
+establecimiento([ferreteria|_]).
+establecimiento([zapateria|_]).
 
 
+arco(cartago, atenas).
+localizacion([Lugar|[]]):- existe_lugar(Lugar).
 
-
-localizacion(S,S).
-localizacion(S):- localizacion(S,S).
-
-oracion(S):- oracion(S, []).
-oracion(S0, S):- sintagma_verbal(S0, S).
-oracion(S0, S):- sintagma_nominal(S0, S1), sintagma_verbal(S1, S).
+oracion(S0, S):- sintagma_verbal(S0, S), localizacion(S).
+oracion(S0, S):- sintagma_nominal(S0, S1), sintagma_verbal(S1, S), localizacion(S).
 oracion(S0, S):- sintagma_nominal(S0, S1), sintagma_verbal(S1,S2), sintagma_nominal(S2,S).
 oracion(S0, S):- sintagma_verbal(S0,S1), sintagma_nominal(S1,S).
+oracion(S0, S):- sintagma_nominal(S0, S).
 
 sintagma_verbal(S0, S):- verbo(S0,S1), preposicion(S1,S).
 sintagma_verbal(S0, S):- verbo(S0,S1), verbo(S1, S2), preposicion(S2,S).
 sintagma_nominal(S0, S):- pronombre(S0,S).
-sintagma_nominal(S0,S):- articulo(S0, S1), establecimiento(S1, S).
+sintagma_nominal(S0, S):- negacion(S0,S).
+sintagma_nominal(S0,S):- articulo(S0, S), establecimiento(S).
+
+
 
 
 wazelog:- bienvenida,
           repeat, 
-            preguntar_origen,
-            preguntar_destino.
+            preguntar_origen(Origen),
+            preguntar_destino(Destino), write(Origen), write(Destino).
         
 
-preguntar_origen:- write("Wazelog: Por favor indiqueme donde se encuentra"), nl,
-                   write("Usuario: "),readln(X),
-                   oracion(X), !.
-
-preguntar_origen:- write("Wazelog: Disculpe no te he entendido"), nl, preguntar_origen.
-
-
-preguntar_destino:- write("Wazelog: Muy bien,¿ Cuál es su destino?"), nl,
-                    write("Usuario: "), readln(X),
-                    oracion(X), !.
-
-preguntar_destino:- write("Wazelog: Lo siento, no te he entendido"), nl, preguntar_destino.
-
+% --------------------- Claurulas generales ------------------------------------------------------
 
 bienvenida:- write("Wazelog : Bienvenido a Wazelog, la mejor lógica para llegar a su destino"), nl.
+
+error:- write("Disculpa, no te he entendido o el lugar que ingresaste no existe").
+
+existe_lugar(Lugar):- arco(Lugar,_); arco(_,Lugar).
+existe_establecimiento(Establecimiento):- establecimiento([Establecimiento]).
+
+
+respuesta_usuario(Respuesta, Lugar):- oracion(Respuesta, [Lugar|_]).
+respuesta_usuario(Respuesta):- oracion(Respuesta, _).
+
+% ----------------- ORIGEN ------------------------------------------------------- 
+
+preguntar_origen(Origen):- write("Wazelog: Por favor indique donde se encuentra"), nl,
+                   write("Usuario: "),readln(Respuesta),
+                   respuesta_usuario(Respuesta, Origen),
+                   existe_lugar(Origen),!.
+
+preguntar_origen(Origen):- error, nl, preguntar_origen(Origen).
+
+
+
+% ----------------- INTERMEDIO -----------------------------------------------------
+
+preguntar_intermedio(Intermedios):- write("Wazelog: ¿Tiene algún destino intermedio?"),nl,
+                                    write("Usuario: "), readln(Respuesta), preguntar_intermedio(Respuesta, Intermedios).
+
+
+preguntar_intermedio(Respuesta, []):- respuesta_usuario(Respuesta), negacion(Respuesta),!.
+
+preguntar_intermedio(Respuesta, Intermedios):-  respuesta_usuario(Respuesta,Establecimiento), existe_establecimiento(Establecimiento),
+                                                write("Wazelog: ¿Dónde se encuentra el/la "), write(Establecimiento), write("?"),nl,
+                                                write("Usuario: "), readln(Respuesta2), respuesta_usuario(Respuesta2,Lugar),
+                                                existe_lugar(Lugar),
+                                                write("Wazelog: Destino intermedio agregado"),nl,
+                                                preguntar_intermedio(Intermedios).
+
+
+preguntar_intermedio(_, Intermedios):- error, preguntar_intermedio(Intermedios).
+
+%----------------------------- DESTINO ----------------------------------------------
+
+preguntar_destino(Destino):- write("Wazelog: ¿Cuál es su destino?"), nl,
+                    write("Usuario: "),readln(Respuesta),
+                    respuesta_usuario(Respuesta, Destino).
+
+
+
+preguntar_destino(Destino):- error, nl, preguntar_destino(Destino).
+
+
+concatenar([],L,L).
+concatenar([X|L1],L2,[X|L3]):- concatenar(L1,L2,L3).
+
