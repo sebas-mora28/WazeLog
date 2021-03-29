@@ -156,12 +156,6 @@ existe_lugar(Lugar):- arco(Lugar,_,_,_,_), !; arco(_,Lugar,_,_,_), !.
 existe_ruta(Origen, Destino):- arco(Origen, Destino,_,_,_).
 existe_ruta(Origen, Destino):- arco(Origen,Intermedio,_,_,_), existe_ruta(Intermedio, Destino).
 
-%dame_ruta(Origen, Destino, Ruta):- arco(Origen, Destino, Distancia, _, _), Lista = [Origen, Destino, Distancia], 
-%    Ruta = [Lista].
-%dame_ruta(Origen, Destino, Ruta):- arco(Origen, Intermedio, D1, _, _), Li = [Origen, Intermedio, D1],
-%    dame_ruta(Intermedio, Destino, Rf), Ruta = [Li|Rf].
-
-
 dame_ruta(Origen, Destinos, Ruta):- length(Destinos, Cantidad), Cantidad == 1, dame_nodo(Destinos, Nodo),
     ruta_directa(Origen, Nodo, Ruta).
 dame_ruta(Origen, Destinos, Ruta):- length(Destinos, Cantidad), Cantidad > 1, dame_ruta_aux(Origen, Destinos, Ruta).
@@ -174,17 +168,12 @@ ruta_directa(Origen, Destino, Ruta):- arco(Origen, Destino, Distancia, _, _), Li
 ruta_directa(Origen, Destino, Ruta):- arco(Origen, Intermedio, D1, _, _), Li = [Origen, Intermedio, D1],
     ruta_directa(Intermedio, Destino, Rf), Ruta = [Li|Rf].
 
-dame_ruta_aux(Origen,[],Ruta):- Origen = x, Ruta = [],!.
+dame_ruta_aux(Origen,[],Ruta):- Ruta = [],!.
 dame_ruta_aux(Origen, [Cabeza|Lista], Ruta):- ruta_directa(Origen, Cabeza, R1), dame_ruta_aux(Cabeza, Lista, Rf),
     concatenar(R1,Rf,Ruta).
 
-
-
 concatenar([],L,L).
 concatenar([X|L1],L2,[X|L3]):- concatenar(L1,L2,L3).
-
-
-
 
 distancia_total(Origen, Destino, DistanciaTotal):- arco(Origen, Destino, DistanciaTotal,_,_).
 distancia_total(Origen, Destino, DistanciaTotal):- arco(Origen,Intermedio,Di,_,_),
