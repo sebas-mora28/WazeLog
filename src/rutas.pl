@@ -1,6 +1,6 @@
 :-dynamic rpath/2.
 
-%Archivo:      database.pl
+%Archivo:      rutas.pl
 %Autor:        Emanuel Antonio Marín Gutiérrez
 %
 %Descripción:  Base de datos general del programa
@@ -56,71 +56,83 @@ arco(d, e, 8.2, 17, 27).
 
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_origen
+ * Descripción: Devuelve la ciudad de origen del arco o arista que es pasado 
+ *              como argumento.
  *      
  */
 dame_origen(Arco, CiudadOrigen)  :- arg(1, Arco, CiudadOrigen).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_destino
+ * Descripción: Devueve la ciudad de destino del arco o arista que es pasado
+ *              como argumento.
  *      
  */
 dame_destino(Arco, CiudadDestino):- arg(2, Arco, CiudadDestino).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_distancia
+ * Descripción: Devuelve la distancia en km que existe entre una ciudad de origen
+ *              y una de destino, según el arco o arista pasado como argumento.
  *      
  */
 dame_distancia(Arco, DistanciaKm):- arg(3, Arco, DistanciaKm).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_tiempo
+ * Descripción: Devuelve el tiempo estimado en minutos que se tarda en ir de una 
+ *              ciudad a otra, según el arco o arista pasado como argumento.
  *      
  */
 dame_tiempo(Arco, TiempoEstimado):- arg(4, Arco, TiempoEstimado).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_tiempo_presa
+ * Descripción: Devuelve el tiempo, considerando presas o algún otro altercado vial,
+ *              en minutos que se tarda en ir de una ciudad a otra, según el arco o 
+ *              arista pasado como argumento.
+ *              
  *      
  */
 dame_tiempo_presa(Arco, TiempoEstimadoEnPresa):- arg(5, Arco, TiempoEstimadoEnPresa).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_lista_origen
+ * Descripción: De acuerdo a una ciudad de destino, se devuelve una lista con todas 
+ *              las ciudades de origen que están conectadas directamente a esta.
  *      
  */
 dame_lista_origen(Destino, ListaOrigen)  :- findall(Origen,  arco(Origen, Destino,_,_,_), ListaOrigen).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_lista_destino
+ * Descripción: De acuerdo a una ciudad de origen, se devuelve una lista con todas 
+ *              las ciudades que están directamente conectadas a esta.
  *      
  */
 dame_lista_destino(Origen, ListaDestino) :- findall(Destino, arco(Origen, Destino,_,_,_), ListaDestino).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_tiempos
+ * Descripción: Devuelve el tiempo estimado y el tiempo estimado en presa que se 
+ *              tarde en ir de una ciudad a otra.
  *      
  */
 dame_tiempos(Origen, Destino, Tiempos)   :- arco(Origen, Destino,_,T1,T2), Tiempos = [T1,T2].
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: existe_lugar
+ * Descripción: Verifica si un lugar existe o no en la base de conocimientos.
  *      
  */
 existe_lugar(Lugar):- arco(Lugar,_,_,_,_), !; arco(_,Lugar,_,_,_), !.
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_ruta
+ * Descripción: Devuelve una lista con sublistas indicando todo el trayecto y las 
+ *              distancias recorridas desde una ciudad de origen y otra de destino, 
+ *              sin considerar ciudades intermedias.
  *      
  */
 dame_ruta(Origen, Destinos, Lista_Respuesta):-
@@ -131,8 +143,10 @@ dame_ruta(Origen, Destinos, Lista_Respuesta):-
     ruta_directa(Origen, Ruta, Lista_Respuesta), !.
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_ruta
+ * Descripción: Devuelve una lista con sublistas indicando todo el trayecto y las
+ *              distancias recorridas entre una ciudad de origen y otra de destino,
+ *              pasando por ciudades intermedio.
  *      
  */
 dame_ruta(Origen, Destinos, Lista_Respuesta):-
@@ -141,15 +155,17 @@ dame_ruta(Origen, Destinos, Lista_Respuesta):-
     dame_ruta_aux(Origen, Destinos, Lista_Respuesta).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_ruta_aux
+ * Descripción: Condición de finalización para el caso en que la ruta total considera
+ *              ciudades intermedias.
  *      
  */
 dame_ruta_aux(_, [], Lista_Respuesta):- Lista_Respuesta = [], !.
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_ruta_aux
+ * Descripción: Se encarga de devolver la lista con sublistas de la trayectoria total
+ *              con ciudades intermedias.
  *      
  */
 dame_ruta_aux(Origen, [Destino|Destinos], Lista_Respuesta):-
@@ -159,15 +175,19 @@ dame_ruta_aux(Origen, [Destino|Destinos], Lista_Respuesta):-
     concatenar(Lista_Inicial, Lista_Final, Lista_Respuesta).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: ruta_directa
+ * Descripción: Condición de finalización de la estructura de datos formada por una
+ *              lista con sublistas de la trayectoria total entre una ciudad de origen
+ *              y una de destino, considerando ciudades intermedias.
  *      
  */
 ruta_directa(_, [], Lista_Respuesta):- Lista_Respuesta = [], !.
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: ruta_directa
+ * Descripción: Se encarga de formar la estructuta de datos formada por una lista
+ *              con sublistas de la trayectoria total entre una ciudad de origen
+ *              y una de destino, considerando ciudades intermedias.
  *      
  */
 ruta_directa(Origen, [Destino|Ruta], Lista_Respuesta):-
@@ -176,8 +196,9 @@ ruta_directa(Origen, [Destino|Ruta], Lista_Respuesta):-
     concatenar(Lista_Inicial, Lista_Final, Lista_Respuesta).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: ruta_diirecta_aux
+ * Descripción: Devuelve una sublista con la ciudad de origen, la ciudad de destino
+ *              y la distancia entre ambas de un arco o arista en particular.
  *      
  */
 ruta_directa_aux(Origen, Destino, Ruta):-
@@ -186,15 +207,15 @@ ruta_directa_aux(Origen, Destino, Ruta):-
     Ruta = [Lista].
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dame_nodo
+ * Descripción: Devuelve la cabeza de una lista.
  *      
  */
 dame_nodo([Destino|_], Destino).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: concatenar
+ * Descripción: Concatena dos listas.
  *      
  */
 concatenar([],L,L).
@@ -205,8 +226,8 @@ concatenar([X|L1],L2,[X|L3]):- concatenar(L1,L2,L3).
 
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: dijkstra
+ * Descripción: Devuelve la ruta más corta entre dos nodos de un grafo.
  *      
  */
 dijkstra(Origen, Destino, Ruta) :-
@@ -215,22 +236,25 @@ dijkstra(Origen, Destino, Ruta) :-
 	  reverse([Destino|RutaD], Ruta),!. 
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: ruta
+ * Descripción: Verifica que exista al menos una ruta en la base de conocimientos
+ *              para poder determinar la más corta en término de distancia.
  *      
  */
 ruta(Origen,Destino,Distancia):-arco(Origen,Destino,Distancia,_,_).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: distancia
+ * Descripción: Devuelve la distancia existente entre una ciudad de origen y otra
+ *              de destino conectadas directamente.
  *      
  */
 distancia(Desde,Hasta,Distancia):-ruta(Desde,Hasta,Distancia).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: ruta_mas_corta
+ * Descripción: Devuelve la ruta más corta comenzando, analizando cada uno de los 
+ *              nodos que conforman la ruta.
  *      
  */
 ruta_mas_corta([Cabeza|Ruta], Distancia) :-		       
@@ -239,16 +263,16 @@ ruta_mas_corta([Cabeza|Ruta], Distancia) :-
 	assert(rpath([Cabeza|Ruta], Distancia)).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: ruta_mas_corta
+ * Descripción: Almacena la ruta y la distancia para luego ser evaluada.
  *      
  */
 ruta_mas_corta(Ruta, Distancia) :-		       
 	assert(rpath(Ruta,Distancia)).
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: atravesar
+ * Descripción: Atraviesa todos los nodos que son accesibles.
  *      
  */
 atravesar(Desde, Ruta, Distancia) :-		   
@@ -258,8 +282,8 @@ atravesar(Desde, Ruta, Distancia) :-
 	atravesar(Hasta,[Desde|Ruta],Distancia+D).	
 
 /**
- * Nombre: 
- * Descripcion: 
+ * Nombre: atravesar
+ * Descripción: Atraviesa todos los nodos que son accesibles.
  *      
  */
 atravesar(Desde):-
