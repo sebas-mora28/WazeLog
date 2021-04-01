@@ -202,8 +202,8 @@ ruta_directa(Origen, [Destino|Ruta], Lista_Respuesta):-
  *      
  */
 ruta_directa_aux(Origen, Destino, Ruta):-
-    arco(Origen, Destino, Distancia, _, _),
-    Lista = [Origen, Destino, Distancia],
+    arco(Origen, Destino, Distancia, Tiempo, TiempoPresa),
+    Lista = [Origen, Destino, Distancia, Tiempo, TiempoPresa],
     Ruta = [Lista].
 
 /**
