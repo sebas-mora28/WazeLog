@@ -8,40 +8,40 @@
 %---------------------BASE DE CONOCIMIENTOS--------------------
 
 %arco(CiudadOrigen, CiudadDestino, DistanciaKm, TiempoEstimado, TiempoEstimadoEnPresa).
-arco(agua-caliente, corralillo, 22.0, 42, 52).
-arco(agua-caliente, dulce-nombre, 1.1, 3, 13).
-arco(agua-caliente, guadalupe, 5.8, 13, 23).
-arco(agua-caliente, llano-grande, 13.0, 24, 34).
+arco(agua_caliente, corralillo, 22.0, 42, 52).
+arco(agua_caliente, dulce_nombre, 1.1, 3, 13).
+arco(agua_caliente, guadalupe, 5.8, 13, 23).
+arco(agua_caliente, llano_grande, 13.0, 24, 34).
 
-arco(carmen, agua-caliente, 5.3, 12, 22).
+arco(carmen, agua_caliente, 5.3, 12, 22).
 arco(carmen, corralillo, 26.0, 46, 56).
-arco(carmen, dulce-nombre, 5.2, 12, 22).
+arco(carmen, dulce_nombre, 5.2, 12, 22).
 arco(carmen, guadalupe, 7.2, 14, 24).
-arco(carmen, llano-grande, 8.9, 15, 25).
+arco(carmen, llano_grande, 8.9, 15, 25).
 
-arco(corralillo, agua-caliente, 22.0, 42, 52).
+arco(corralillo, agua_caliente, 22.0, 42, 52).
 arco(corralillo, carmen, 25.0, 49, 59).
-arco(corralillo, dulce-nombre, 23.0, 45, 55).
+arco(corralillo, dulce_nombre, 23.0, 45, 55).
 arco(corralillo, guadalupe, 19.0, 35, 45).
-arco(corralillo, llano-grande, 32.0, 57, 67).
+arco(corralillo, llano_grande, 32.0, 57, 67).
 
-arco(dulce-nombre, agua-caliente, 1.1, 4, 14).
-arco(dulce-nombre, carmen, 5.5, 15, 25).
-arco(dulce-nombre, corralillo, 23.0, 44, 54).
-arco(dulce-nombre, guadalupe, 6.0, 14, 24).
-arco(dulce-nombre, llano-grande, 13.0, 23, 33).
+arco(dulce_nombre, agua_caliente, 1.1, 4, 14).
+arco(dulce_nombre, carmen, 5.5, 15, 25).
+arco(dulce_nombre, corralillo, 23.0, 44, 54).
+arco(dulce_nombre, guadalupe, 6.0, 14, 24).
+arco(dulce_nombre, llano_grande, 13.0, 23, 33).
 
-arco(guadalupe, agua-caliente, 6.2, 12, 22).
+arco(guadalupe, agua_caliente, 6.2, 12, 22).
 arco(guadalupe, carmen, 6.4, 16, 26).
 arco(guadalupe, corralillo, 19.0, 36, 46).
-arco(guadalupe, dulce-nombre, 6.1, 13, 23).
-arco(guadalupe, llano-grande, 13.0, 25, 35).
+arco(guadalupe, dulce_nombre, 6.1, 13, 23).
+arco(guadalupe, llano_grande, 13.0, 25, 35).
 
-arco(llano-grande, agua-caliente, 13.0, 23, 33).
-arco(llano-grande, carmen, 8.9, 15, 25).
-arco(llano-grande, corralillo, 33.0, 56, 66).
-arco(llano-grande, dulce-nombre, 13.0, 23, 33).
-arco(llano-grande, guadalupe, 14.0, 23, 33).
+arco(llano_grande, agua_caliente, 13.0, 23, 33).
+arco(llano_grande, carmen, 8.9, 15, 25).
+arco(llano_grande, corralillo, 33.0, 56, 66).
+arco(llano_grande, dulce_nombre, 13.0, 23, 33).
+arco(llano_grande, guadalupe, 14.0, 23, 33).
 
 arco(a, b, 12.2, 21, 31).
 arco(a, w, 3.0, 10, 20).
