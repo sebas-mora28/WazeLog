@@ -15,18 +15,44 @@ wazelog:-   bienvenida,
             preguntar_destino(Destino),
             append(Intermedios, [Destino], Lista_destinos),
             dame_ruta(Origen, Lista_destinos, Ruta),
-            write("Wazelog: Su ruta sería: "), imprimir_ruta(Ruta, Distancia_total),
-            write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),nl,
+            write("Wazelog: Su ruta sería: "), imprimir_ruta(Ruta, Distancia_total, TiempoEstimado_total, TiempoEstimadoEnPresa_total),
+            write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),
+            write(" , Tiempo estimado: "), write(TiempoEstimado_total), write(" h"),
+            write(" , Tiempo en presa estimado: "), write(TiempoEstimadoEnPresa_total), write(" h"), nl,  
             write("Wazelog: Muchas gracias por utilizar Wazelog, lo esperamos pronto"),nl, wazelog.
 
 
+
+
+/**
+ *  Nombre: wazelog
+ *  Descripción: Cláusula que se ejecuta cuando no existe la ruta entre los lugares dados por el usuario. 
+ *               Vuelve a llamar la cláusula con su mismo nombre para volver a comenzar.
+ */
 wazelog:- write("Wazelog: No existe una ruta, por favor intentelo de nuevo"),nl, wazelog.
 
-imprimir_ruta([[Origen,Destino,Distancia]|[]], Distancia):- write(Origen), write(", "), write(Destino) .
 
-imprimir_ruta([[Origen,_,Distancia]|Resto], Distancia_total):-  write(Origen), write(", "), 
-                                                                imprimir_ruta(Resto, X), 
-                                                                Distancia_total is Distancia + X.
+
+/**
+ *  Nombre: imprimir_ruta
+ *  Descripción: Punto de parada, se ejecuta cuando se llega al último elemento de la lista de ruta. Imprime
+ *               el origen y destino del último elemento de la lista. 
+ */
+imprimir_ruta([[Origen,Destino,Distancia, TiempoEstimado, TiempoEstimadoEnPresa]|[]], Distancia, TiempoEstimado,TiempoEstimadoEnPresa):- 
+                                                                write(Origen), write(", "), write(Destino) .
+
+
+/**
+ *  Nombre: imprimir_ruta
+ *  Descripción: Recorre la lista de ruta e imprime el lugar de origen del arco actual. Además devuelve 
+ *               la distancia total de la ruta dada. 
+ */
+imprimir_ruta([[Origen,_,Distancia, TiempoEstimado, TiempoEstimadoEnPresa]|Resto], Distancia_total,TiempoEstimado_total, TiempoEstimadoEnPresa_total):-  
+                                                                write(Origen), write(", "), 
+                                                                imprimir_ruta(Resto, X, Y, Z), 
+                                                                Distancia_total is Distancia + X,
+                                                                TiempoEstimado_total is TiempoEstimado + Y,
+                                                                TiempoEstimadoEnPresa_total is TiempoEstimadoEnPresa + Z.
 
 % --------------------- Cláusulas generales ------------------------------------------------------
 
