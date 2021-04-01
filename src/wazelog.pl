@@ -16,7 +16,7 @@ wazelog:-   bienvenida,
             append(Intermedios, [Destino], Lista_destinos),
             dame_ruta(Origen, Lista_destinos, Ruta),
             write("Wazelog: Su ruta sería: "), imprimir_ruta(Ruta, Distancia_total),
-            write(" , Tiempo estimado: "), write(Distancia_total), write(" KM"),nl,
+            write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),nl,
             write("Wazelog: Muchas gracias por utilizar Wazelog, lo esperamos pronto"),nl, wazelog.
 
 
