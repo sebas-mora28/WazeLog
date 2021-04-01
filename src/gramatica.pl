@@ -1,5 +1,4 @@
-
-
+:-consult(rutas).
 
 
 %---- PRONOMBRES --------------
@@ -61,7 +60,7 @@ localizacion([Lugar|[]]):- existe_lugar(Lugar).
  * Nombre: existe_lugar
  * Descripción: Verifica si un lugar dado existe en la base de datos.
  */
-existe_lugar(Lugar):- arco(Lugar,_); arco(_,Lugar).
+
 
 
 /**

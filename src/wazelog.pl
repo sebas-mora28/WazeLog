@@ -1,7 +1,6 @@
 #!/usr/local/bin/swipl
 :-consult(gramatica).
-
-
+:-consult(rutas).
 
 
 /**
@@ -10,12 +9,24 @@
  *              intermedios y el destino final.
  * 
  */
-wazelog:- bienvenida,
-          repeat, 
+wazelog:-   bienvenida,
             preguntar_origen(Origen), 
             preguntar_intermedio(Intermedios),
-            preguntar_destino(Destino), write(Intermedios), write(Origen), write(Destino).
-        
+            preguntar_destino(Destino),
+            append(Intermedios, [Destino], Lista_destinos),
+            dame_ruta(Origen, Lista_destinos, Ruta),
+            write("Wazelog: Su ruta sería: "), imprimir_ruta(Ruta, Distancia_total),
+            write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),nl,
+            write("Wazelog: Muchas gracias por utilizar Wazelog, lo esperamos pronto"),nl, wazelog.
+
+
+wazelog:- write("Wazelog: No existe una ruta, por favor intentelo de nuevo"),nl, wazelog.
+
+imprimir_ruta([[Origen,Destino,Distancia]|[]], Distancia):- write(Origen), write(", "), write(Destino) .
+
+imprimir_ruta([[Origen,_,Distancia]|Resto], Distancia_total):-  write(Origen), write(", "), 
+                                                                imprimir_ruta(Resto, X), 
+                                                                Distancia_total is Distancia + X.
 
 % --------------------- Cláusulas generales ------------------------------------------------------
 
@@ -71,15 +82,12 @@ preguntar_origen(Origen):- write("Wazelog: Por favor indique donde se encuentra"
                    respuesta_usuario(Respuesta, Origen),
                    existe_lugar(Origen),!.
 
-
 /**
  * Nombre: preguntar_origen
  * Descripcion: Se encarga de mandar un mensaje de error en caso de no recibir una oracion correcta y volver a llamar 
  *              la cláusula con el mismo nombre para volver a pedir el lugar de origen.
  */
 preguntar_origen(Origen):- error, nl, preguntar_origen(Origen).
-
-
 
 % ----------------- INTERMEDIO -----------------------------------------------------
 
@@ -91,7 +99,7 @@ preguntar_origen(Origen):- error, nl, preguntar_origen(Origen).
  *      
  */
 preguntar_intermedio(Intermedios):- write("Wazelog: ¿Tiene algún destino intermedio?"),nl,
-                                    write("Usuario: "), readln(Respuesta), preguntar_intermedio(Respuesta, Intermedios).
+                                    write("Usuario: "), readln(Respuesta), preguntar_intermedio(Respuesta, Intermedios),!.
 
 /**
  * Nombre: preguntar_intermedio
@@ -105,8 +113,8 @@ preguntar_intermedio(Respuesta, [Lugar | Intermedios]):-  respuesta_usuario(Resp
                                                 write("Wazelog: ¿Dónde se encuentra el/la "), write(Establecimiento), write("?"),nl,
                                                 write("Usuario: "), readln(Respuesta2), respuesta_usuario(Respuesta2,Lugar),
                                                 existe_lugar(Lugar),
-                                                write("Wazelog: Destino intermedio agregado"),nl,
-                                                preguntar_intermedio(Intermedios).
+                                                write("Wazelog: Destino intermedio agregado: "), write(Lugar),nl,
+                                                preguntar_intermedio(Intermedios),!.
 
 
 
