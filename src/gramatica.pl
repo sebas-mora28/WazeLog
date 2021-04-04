@@ -32,7 +32,10 @@ verbo([dirigimos|S],S).
 verbo([ir|S],S).
 verbo([quiero|S],S).
 verbo([pasar|S],S).
-
+verbo([ubicado|S], S).
+verbo([ubica|S], S).
+verbo([ubico|S], S).
+verbo([encuentra|S], S).
 %---- NEGACION --------------
 negacion([no|[]],[]).
 negacion([no|_]).
@@ -46,8 +49,6 @@ establecimiento([mercado|_]).
 establecimiento([ferreteria|_]).
 establecimiento([zapateria|_]).
 
-
-arco(cartago, atenas).
 
 /**
  * Nombre: localizacion 

@@ -17,8 +17,8 @@ wazelog:-   bienvenida,
             dame_ruta(Origen, Lista_destinos, Ruta),
             write("Wazelog: Su ruta sería: "), imprimir_ruta(Ruta, Distancia_total, TiempoEstimado_total, TiempoEstimadoEnPresa_total),
             write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),
-            write(" , Tiempo estimado: "), write(TiempoEstimado_total), write(" h"),
-            write(" , Tiempo en presa estimado: "), write(TiempoEstimadoEnPresa_total), write(" h"), nl,  
+            write(" , Tiempo estimado: "), write(TiempoEstimado_total), write(" min"),
+            write(" , Tiempo en presa estimado: "), write(TiempoEstimadoEnPresa_total), write(" min"), nl,  
             write("Wazelog: Muchas gracias por utilizar Wazelog, lo esperamos pronto"),nl, wazelog.
 
 
@@ -104,7 +104,7 @@ respuesta_usuario(Respuesta):- oracion(Respuesta, _).
  *              efectivamente existe dentro de la base de datos.
  */
 preguntar_origen(Origen):- write("Wazelog: Por favor indique donde se encuentra"), nl,
-                   write("Usuario: "),readln(Respuesta),
+                   write("Usuario: "), readln(Respuesta),
                    respuesta_usuario(Respuesta, Origen),
                    existe_lugar(Origen),!.
 
@@ -157,8 +157,6 @@ preguntar_intermedio(Respuesta, []):- respuesta_usuario(Respuesta), negacion(Res
  *              la cláusula con el mismo nombre para volver a pedir un destino intermedio.
  */
 preguntar_intermedio(_, Intermedios):- error, nl,  preguntar_intermedio(Intermedios).
-
-
 
 
 
