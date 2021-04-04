@@ -8,6 +8,11 @@ pronombre([yo|S],S).
 pronombre([nosotros|S],S).
 pronombre([nos|S],S).
 pronombre([se|S], S).
+pronombre([ellos|S],S).
+pronombre([ellas|S],S).
+pronombre([el|S],S).
+pronombre([ella|S],S).
+
 
 %---- ARTICULOS --------------
 articulo([la|S],S).
@@ -26,6 +31,8 @@ verbo([estoy|S],S).
 verbo([estamos|S],S).
 verbo([esta|S], S).
 verbo([voy|S],S).
+verbo([va|S],S).
+verbo([van]|S), S.
 verbo([vamos|S],S).
 verbo([dirijo|S],S).
 verbo([dirigimos|S],S).
