@@ -65,6 +65,12 @@ establecimiento([farmacia|_]).
 establecimiento([mercado|_]).
 establecimiento([ferreteria|_]).
 establecimiento([zapateria|_]).
+establecimiento([carniceria|_]).
+establecimiento([fruteria|_]).
+establecimiento([mall|_]).
+establecimiento([tienda|_]).
+establecimiento([restaurante|_]).
+
 
 
 /**
