@@ -35,22 +35,27 @@ preposicion([a|S],S).
 verbo([estoy|S],S).
 verbo([estamos|S],S).
 verbo([esta|S], S).
+verbo([estan|S], S).
 verbo([voy|S],S).
 verbo([va|S],S).
 verbo([van|S], S).
 verbo([vamos|S],S).
 verbo([dirijo|S],S).
-verbo([dirijen|S],S).
-verbo([dirijimos|S],S).
+verbo([dirigen|S],S).
+verbo([dirige|S],S).
+verbo([dirigimos|S],S).
 verbo([ir|S],S).
 verbo([quiero|S],S).
 verbo([pasar|S],S).
+verbo([ubicados|S], S).
 verbo([ubicado|S], S).
 verbo([ubica|S], S).
 verbo([ubico|S], S).
 verbo([ubican|S], S).
 verbo([encuentra|S], S).
+verbo([encuentro|S], S).
 verbo([tengo|S], S).
+verbo([tiene|S], S).
 
 
 %---- NEGACION --------------
