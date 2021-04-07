@@ -11,37 +11,37 @@
 
 
 
-arco(san_jose, corralillo, 22.0, 42, 52).
-arco(san_jose, cartago, 20, 35, 45).
+arco(san_jose, corralillo, 22.0, 22, 44).
+arco(san_jose, cartago, 20, 20, 40).
 arco(corralillo, san_jose, 22.0, 42, 52).
-arco(corralillo, musgo_verde, 6.0, 13, 23).
-arco(musgo_verde, cartago, 10.0, 24, 34).
-arco(musgo_verde, corralillo, 6.0, 13, 23).
-arco(cartago, musgo_verde, 10.0, 16, 26).
-arco(cartago, san_jose, 20.0, 35, 45).
-arco(cartago, tres_rios, 8.0, 14, 24).
-arco(cartago, paraiso, 10.0, 15, 25).
-arco(cartago, pacayas, 13.0, 17, 27).
-arco(tres_rios, san_jose, 8.0, 15, 25).
-arco(tres_rios, pacayas, 15.0, 25, 35).
-arco(pacayas, tres_rios, 15.0, 49, 59).
-arco(pacayas, cartago, 13.0, 17, 27).
-arco(pacayas, cervantes, 8.0, 23, 33).
-arco(paraiso, cervantes, 4.0, 12, 22).
-arco(paraiso, orosi, 8.0, 25, 35).
-arco(paraiso, cachi, 10.0, 30, 40).
-arco(cervantes, pacayas, 8.0, 23, 33).
-arco(cervantes, juan_viñas, 5.0, 10, 20).
-arco(cervantes, cachi, 7.0, 15, 22).
-arco(juan_viñas, turrialba, 4.0, 14, 24).
-arco(turrialba, pacayas, 18.0, 30, 40).
-arco(turrialba, cachi, 40, 55, 65).
-arco(cachi, cervantes, 7.0, 15, 22).
-arco(cachi, paraiso, 10.0, 30, 40).
-arco(cachi, orosi, 12.0, 25, 35).
-arco(cachi, turrialba, 40.0, 10, 20).
-arco(orosi, paraiso, 8.0, 25, 35).
-arco(orosi, cachi, 12.0, 30, 40).
+arco(corralillo, musgo_verde, 6.0, 6, 12).
+arco(musgo_verde, cartago, 10.0, 10, 20).
+arco(musgo_verde, corralillo, 6.0, 12, 24).
+arco(cartago, musgo_verde, 10.0, 20, 40).
+arco(cartago, san_jose, 20.0, 20, 40).
+arco(cartago, tres_rios, 8.0, 8, 16).
+arco(cartago, paraiso, 10.0, 10, 20).
+arco(cartago, pacayas, 13.0, 13, 26).
+arco(tres_rios, san_jose, 8.0, 8, 16).
+arco(tres_rios, pacayas, 15.0, 15, 30).
+arco(pacayas, tres_rios, 15.0, 15, 30).
+arco(pacayas, cartago, 13.0, 13, 26).
+arco(pacayas, cervantes, 8.0, 8, 16).
+arco(paraiso, cervantes, 4.0, 4, 8).
+arco(paraiso, orosi, 8.0, 8, 16).
+arco(paraiso, cachi, 10.0, 10, 20).
+arco(cervantes, pacayas, 8.0, 8, 16).
+arco(cervantes, juan_viñas, 5.0, 5, 10).
+arco(cervantes, cachi, 7.0, 7, 14).
+arco(juan_viñas, turrialba , 4.0, 4, 8).
+arco(turrialba, pacayas, 18.0, 18, 36).
+arco(turrialba, cachi, 40, 40, 80).
+arco(cachi, cervantes, 7.0, 7, 14).
+arco(cachi, paraiso, 10.0, 10, 20).
+arco(cachi, orosi, 12.0, 12, 24).
+arco(cachi, turrialba, 40.0, 40, 80).
+arco(orosi, paraiso, 8.0, 8, 16).
+arco(orosi, cachi, 12.0, 12, 24).
 
 
 
