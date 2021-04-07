@@ -15,7 +15,7 @@ wazelog:-   bienvenida,
             preguntar_destino(Destino),
             append(Intermedios, [Destino], Lista_destinos),
             dame_ruta(Origen, Lista_destinos, Ruta),
-            write("Wazelog: Su ruta sería: "), imprimir_ruta(Ruta, Distancia_total, Tiempo_estimado_total, Tiempo_estimado_en_presa_total),
+            write("Wazelog: Su ruta seria: "), imprimir_ruta(Ruta, Distancia_total, Tiempo_estimado_total, Tiempo_estimado_en_presa_total),
             write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),
             write(" , Tiempo estimado: "), write(Tiempo_estimado_total), write(" min"),
             write(" , Tiempo en presa estimado: "), write(Tiempo_estimado_en_presa_total), write(" min"), nl,  
@@ -78,7 +78,7 @@ imprimir_ruta([[Origen,_,Distancia, Tiempo_estimado, Tiempo_estimado_en_presa]|R
  * Descripcion: Imprime un mensaje de bienvenida.
  *      
  */
-bienvenida:- write("Wazelog: Bienvenido a Wazelog, la mejor lógica para llegar a su destino"), nl.
+bienvenida:- write("Wazelog: Bienvenido a Wazelog, la mejor logica para llegar a su destino"), nl.
 
 
 
@@ -182,6 +182,8 @@ preguntar_intermedio(Respuesta, [Destino_intermedio | Intermedios]):-   respuest
  * preguntar_intermedio(Respuesta, []) --> Respuesta: Lista con la respuesta dada por el usuario. 
  *                                     --> [] --> Devuelve una lista vacía para terminar de formar la lista con destinos intermedios. 
  */
+
+
 preguntar_intermedio(Respuesta, []):- respuesta_usuario(Respuesta), negacion(Respuesta), !.
 
 
@@ -206,7 +208,7 @@ preguntar_intermedio(_, Intermedios):- error, nl,  preguntar_intermedio(Intermed
  *
  * preguntar_destino(Destino) --> Destino: Nombre del lugar de destino dado por el usuario
  */
-preguntar_destino(Destino):- write("Wazelog: ¿Cuál es su destino?"), nl,
+preguntar_destino(Destino):- write("Wazelog: ¿Cual es su destino?"), nl,
                     write("Usuario: "),readln(Respuesta),
                     respuesta_usuario(Respuesta, Destino),
                     existe_lugar(Destino),!.
