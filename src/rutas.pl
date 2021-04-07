@@ -8,53 +8,42 @@
 %---------------------BASE DE CONOCIMIENTOS--------------------
 
 %arco(CiudadOrigen, CiudadDestino, DistanciaKm, TiempoEstimado, TiempoEstimadoEnPresa).
-arco(agua_caliente, corralillo, 22.0, 42, 52).
-arco(agua_caliente, dulce_nombre, 1.1, 3, 13).
-arco(agua_caliente, guadalupe, 5.8, 13, 23).
-arco(agua_caliente, llano_grande, 13.0, 24, 34).
-
-arco(carmen, agua_caliente, 5.3, 12, 22).
-arco(carmen, corralillo, 26.0, 46, 56).
-arco(carmen, dulce_nombre, 5.2, 12, 22).
-arco(carmen, guadalupe, 7.2, 14, 24).
-arco(carmen, llano_grande, 8.9, 15, 25).
-
-arco(corralillo, agua_caliente, 22.0, 42, 52).
-arco(corralillo, carmen, 25.0, 49, 59).
-arco(corralillo, dulce_nombre, 23.0, 45, 55).
-arco(corralillo, guadalupe, 19.0, 35, 45).
-arco(corralillo, llano_grande, 32.0, 57, 67).
-
-arco(dulce_nombre, agua_caliente, 1.1, 4, 14).
-arco(dulce_nombre, carmen, 5.5, 15, 25).
-arco(dulce_nombre, corralillo, 23.0, 44, 54).
-arco(dulce_nombre, guadalupe, 6.0, 14, 24).
-arco(dulce_nombre, llano_grande, 13.0, 23, 33).
-
-arco(guadalupe, agua_caliente, 6.2, 12, 22).
-arco(guadalupe, carmen, 6.4, 16, 26).
-arco(guadalupe, corralillo, 19.0, 36, 46).
-arco(guadalupe, dulce_nombre, 6.1, 13, 23).
-arco(guadalupe, llano_grande, 13.0, 25, 35).
-
-arco(llano_grande, agua_caliente, 13.0, 23, 33).
-arco(llano_grande, carmen, 8.9, 15, 25).
-arco(llano_grande, corralillo, 33.0, 56, 66).
-arco(llano_grande, dulce_nombre, 13.0, 23, 33).
-arco(llano_grande, guadalupe, 14.0, 23, 33).
 
 
-arco(cartago, heredia, 13.0, 23, 33).
-arco(cartago, heredia, 5.0, 23, 33).
-arco(heredia, puntarenas, 20.0, 23, 33).
-arco(heredia, alajuela, 2.0, 23, 33).
-arco(alajuela, heredia, 15.0, 23, 33).
-arco(alajuela, cartago, 8.0, 23, 33).
-arco(limon, guanacaste, 250.0, 23, 33).
-arco(limon, puntarenas, 35.0, 23, 33).
-arco(san_jose, cartago, 2.0, 23, 33).
-arco(puntarenas, alajuela, 13.0, 23, 33).
-arco(puntarenas, limon, 13.0, 23, 33).
+
+arco(san_jose, corralillo, 22.0, 42, 52).
+arco(san_jose, cartago, 20, 35, 45).
+arco(corralillo, san_jose, 22.0, 42, 52).
+arco(corralillo, musgo_verde, 6.0, 13, 23).
+arco(musgo_verde, cartago, 10.0, 24, 34).
+arco(musgo_verde, corralillo, 6.0, 13, 23).
+arco(cartago, musgo_verde, 10.0, 16, 26).
+arco(cartago, san_jose, 20.0, 35, 45).
+arco(cartago, tres_rios, 8.0, 14, 24).
+arco(cartago, paraiso, 10.0, 15, 25).
+arco(cartago, pacayas, 13.0, 17, 27).
+arco(tres_rios, san_jose, 8.0, 15, 25).
+arco(tres_rios, pacayas, 15.0, 25, 35).
+arco(pacayas, tres_rios, 15.0, 49, 59).
+arco(pacayas, cartago, 13.0, 17, 27).
+arco(pacayas, cervantes, 8.0, 23, 33).
+arco(paraiso, cervantes, 4.0, 12, 22).
+arco(paraiso, orosi, 8.0, 25, 35).
+arco(paraiso, cachi, 10.0, 30, 40).
+arco(cervantes, pacayas, 8.0, 23, 33).
+arco(cervantes, juan_viñas, 5.0, 10, 20).
+arco(cervantes, cachi, 7.0, 15, 22).
+arco(juan_viñas, turrialba, 4.0, 14, 24).
+arco(turrialba, pacayas, 18.0, 30, 40).
+arco(turrialba, cachi, 40, 55, 65).
+arco(cachi, cervantes, 7.0, 15, 22).
+arco(cachi, paraiso, 10.0, 30, 40).
+arco(cachi, orosi, 12.0, 25, 35).
+arco(cachi, turrialba, 40.0, 10, 20).
+arco(orosi, paraiso, 8.0, 25, 35).
+arco(orosi, cachi, 12.0, 30, 40).
+
+
 
 %----------------------------REGLAS-------------------------------
 
