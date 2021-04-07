@@ -44,6 +44,7 @@ arco(llano_grande, dulce_nombre, 13.0, 23, 33).
 arco(llano_grande, guadalupe, 14.0, 23, 33).
 
 arco(a, b, 12.2, 21, 31).
+arco(y, z, 11, 12,23).
 arco(a, w, 3.0, 10, 20).
 arco(w, c, 4.2, 12, 22).
 arco(b, c, 5.1, 12, 22).
