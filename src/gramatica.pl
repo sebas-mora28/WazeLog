@@ -86,6 +86,7 @@ verbo([encuentra|S], S).
 verbo([encuentro|S], S).
 verbo([tengo|S], S).
 verbo([tiene|S], S).
+verbo([tienen|S], S).
 verbo([tenemos|S], S).
 
 
@@ -126,6 +127,10 @@ establecimiento([fruteria|_]).
 establecimiento([mall|_]).
 establecimiento([tienda|_]).
 establecimiento([restaurante|_]).
+establecimiento([panaderia|_]).
+establecimiento([iglesia|_]).
+establecimiento([parque|_]).
+establecimiento([pulperia|_]).
 
 
 

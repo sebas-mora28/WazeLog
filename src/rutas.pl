@@ -43,15 +43,18 @@ arco(llano_grande, corralillo, 33.0, 56, 66).
 arco(llano_grande, dulce_nombre, 13.0, 23, 33).
 arco(llano_grande, guadalupe, 14.0, 23, 33).
 
-arco(a, b, 12.2, 21, 31).
-arco(y, z, 11, 12,23).
-arco(a, w, 3.0, 10, 20).
-arco(w, c, 4.2, 12, 22).
-arco(b, c, 5.1, 12, 22).
-arco(c, d, 32.0, 45, 55).
-arco(c, f, 23.7, 33, 43).
-arco(d, e, 8.2, 17, 27).
 
+arco(cartago, heredia, 13.0, 23, 33).
+arco(cartago, heredia, 5.0, 23, 33).
+arco(heredia, puntarenas, 20.0, 23, 33).
+arco(heredia, alajuela, 2.0, 23, 33).
+arco(alajuela, heredia, 15.0, 23, 33).
+arco(alajuela, cartago, 8.0, 23, 33).
+arco(limon, guanacaste, 250.0, 23, 33).
+arco(limon, puntarenas, 35.0, 23, 33).
+arco(san_jose, cartago, 2.0, 23, 33).
+arco(puntarenas, alajuela, 13.0, 23, 33).
+arco(puntarenas, limon, 13.0, 23, 33).
 
 %----------------------------REGLAS-------------------------------
 
