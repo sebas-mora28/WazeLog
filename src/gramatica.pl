@@ -86,6 +86,7 @@ verbo([encuentra|S], S).
 verbo([encuentro|S], S).
 verbo([tengo|S], S).
 verbo([tiene|S], S).
+verbo([tenemos|S], S).
 
 
 %---- NEGACION --------------

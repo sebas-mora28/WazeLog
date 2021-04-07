@@ -151,7 +151,7 @@ preguntar_origen(Origen):- error, nl, preguntar_origen(Origen).
  * preguntar_intermedio(Intermedios) --> Intermedios: Lista con los lugares intermedios dado por el usuario. 
  *      
  */
-preguntar_intermedio(Intermedios):- write("Wazelog: ¿Tiene algún destino intermedio?"),nl,
+preguntar_intermedio(Intermedios):- write("Wazelog: ¿tiene algun destino intermedio?"),nl,
                                     write("Usuario: "), readln(Respuesta), preguntar_intermedio(Respuesta, Intermedios),!.
 
 /**
@@ -167,7 +167,7 @@ preguntar_intermedio(Intermedios):- write("Wazelog: ¿Tiene algún destino inter
  */
 preguntar_intermedio(Respuesta, [Destino_intermedio | Intermedios]):-   respuesta_usuario(Respuesta,Establecimiento), dif(Respuesta, no),
                                                                         existe_establecimiento(Establecimiento),
-                                                                        write("Wazelog: ¿Dónde se encuentra el/la "), write(Establecimiento), write("?"),nl,
+                                                                        write("Wazelog: ¿Donde se encuentra el/la "), write(Establecimiento), write("?"),nl,
                                                                         write("Usuario: "), readln(Respuesta2), respuesta_usuario(Respuesta2,Destino_intermedio),
                                                                         existe_lugar(Destino_intermedio),
                                                                         write("Wazelog: Destino intermedio agregado: "), write(Destino_intermedio),nl,
