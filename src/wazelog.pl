@@ -14,7 +14,8 @@ wazelog:-   bienvenida,
             preguntar_intermedio(Intermedios),
             preguntar_destino(Destino),
             append(Intermedios, [Destino], Lista_destinos),
-            dame_ruta(Origen, Lista_destinos, Ruta),
+            eliminar_consecutivo(Lista_destinos, Lista_destinos_sin_consecutivos),
+            dame_ruta(Origen, Lista_destinos_sin_consecutivos, Ruta),
             write("Wazelog: Su ruta seria: "), imprimir_ruta(Ruta, Distancia_total, Tiempo_estimado_total, Tiempo_estimado_en_presa_total),
             write(" , Distancia estimada: "), write(Distancia_total), write(" KM"),
             write(" , Tiempo estimado: "), write(Tiempo_estimado_total), write(" min"),
@@ -112,7 +113,9 @@ existe_establecimiento(Establecimiento):- establecimiento([Establecimiento]).
  *      
  */
 respuesta_usuario(Respuesta, Lugar):- oracion(Respuesta, [Lugar|_]).
+respuesta_usuario([Respuesta|_],_):- not(dif(Respuesta, q)), halt.
 respuesta_usuario(Respuesta):- oracion(Respuesta, _).
+respuesta_usuario([Respuesta|_]):- not(dif(Respuesta, q)), halt.
 
 
 
@@ -196,6 +199,20 @@ preguntar_intermedio(Respuesta, []):- respuesta_usuario(Respuesta), negacion(Res
  * preguntar_intermdio(_, Intermedios) --> Intermedios: Lista con los destinos intermedios dados por el usuario. 
  */
 preguntar_intermedio(_, Intermedios):- error, nl,  preguntar_intermedio(Intermedios).
+
+
+
+
+/**
+* Nombre: eliminar_duplicado
+* Descripcion: Se encarga de eliminar los elementos consecutivos de una lista 
+* 
+*/
+eliminar_consecutivo([], []).
+eliminar_consecutivo([X], [X]).
+eliminar_consecutivo([X1, X2 | Xs], [X1 | Ys]) :- dif(X1, X2), eliminar_consecutivo([X2|Xs], Ys).
+eliminar_consecutivo([X, X | Xs], Ys) :- eliminar_consecutivo([X | Xs], Ys).
+
 
 
 
