@@ -31,9 +31,9 @@ arco(paraiso, cervantes, 4.0, 4, 8).
 arco(paraiso, orosi, 8.0, 8, 16).
 arco(paraiso, cachi, 10.0, 10, 20).
 arco(cervantes, pacayas, 8.0, 8, 16).
-arco(cervantes, juan_viñas, 5.0, 5, 10).
+arco(cervantes, juan_vinas, 5.0, 5, 10).
 arco(cervantes, cachi, 7.0, 7, 14).
-arco(juan_viñas, turrialba , 4.0, 4, 8).
+arco(juan_vinas, turrialba , 4.0, 4, 8).
 arco(turrialba, pacayas, 18.0, 18, 36).
 arco(turrialba, cachi, 40, 40, 80).
 arco(cachi, cervantes, 7.0, 7, 14).
