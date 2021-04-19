@@ -1,3 +1,3 @@
 WazeLog
 
-II Tarea programada de Lenguajes, Compiladores e Intérpretes.
+II tarea programada de lenguajes, compiladores e intérpretes.
